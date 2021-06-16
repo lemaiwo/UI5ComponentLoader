@@ -1,0 +1,4 @@
+<mvc:View controllerName="be.wl.CompLoaderApp.controller.App" displayBlock="true" height="100%" xmlns="sap.f"
+	xmlns:mvc="sap.ui.core.mvc">
+	<FlexibleColumnLayout id="flexibleColumnLayout" stateChange=".onStateChanged" backgroundDesign="Solid" layout="{/layout}"/>
+</mvc:View>

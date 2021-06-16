@@ -1,0 +1,36 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: '1.0'
+metadata:
+  name: 'CompLoaderApp'
+type: application
+ui5Theme: sap_fiori_3
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: env:TARGET
+          client: env:CLIENT
+          auth: basic
+        credentials:
+          username: env:SAPUSERID
+          password: env:SAPPWD
+        app:
+          name: ZCOMPLOADER
+          description: Component Loader
+          package: env:PACKAGE
+          transport: env:TRANSPORT
+    - name: ui5-task-transpile
+      afterTask: replaceVersion
+      configuration:
+        debug: true
+        removeConsoleStatements: true
+        transpileAsync: true
+        excludePatterns:
+        - "lib/"

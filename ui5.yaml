@@ -1,0 +1,41 @@
+specVersion: '1.0'
+metadata:
+  name: CompLoaderApp
+type: application
+resources:
+  configuration:
+    propertiesFileSourceEncoding: UTF-8
+builder:
+  customTasks:
+  - name: ui5-task-transpile
+    afterTask: replaceVersion
+    configuration:
+      debug: true
+      removeConsoleStatements: true
+      transpileAsync: true
+      excludePatterns:
+      - "lib/"
+server:
+  customMiddleware:
+  - name: fiori-tools-proxy
+    afterMiddleware: compression
+    configuration:
+      ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+      backend:
+      - path: /resources/be/wl/zcomploaderlib
+        pathPrefix: /sap/bc/ui5_ui5/sap/zcomploader_lib
+        url: http://178.18.246.18:50000
+      - path: /sap/bc/ui5_ui5/sap/zdetailcomp1
+        pathPrefix: /
+        url: http://localhost:8081
+      - path: /sap/bc/ui5_ui5/sap/zlistcomponent1
+        pathPrefix: /
+        url: http://localhost:8082
+      - path: /sap
+        url: http://178.18.246.18:50000
+      ui5:
+        path: 
+        - /resources
+        - /test-resources
+        url: https://ui5.sap.com
+        version:  # The UI5 version, for instance, 1.78.1. Empty means latest version

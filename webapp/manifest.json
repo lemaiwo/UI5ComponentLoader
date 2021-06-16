@@ -1,0 +1,143 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "be.wl.CompLoaderApp",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZCL_CONFIG_C_CDS": {
+				"uri": "/sap/opu/odata/sap/ZCL_CONFIG_C_CDS/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"ZCL_SCENARIO_C_CDS": {
+				"uri": "/sap/opu/odata/sap/ZCL_SCENARIO_C_CDS/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"fullWidth": true,
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "be.wl.CompLoaderApp.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "fcl"
+		},
+		"services": {
+			"ShellUIService": {
+				"factoryName": "sap.ushell.ui5service.ShellUIService"
+			}
+		},
+		"dependencies": {
+			"minUI5Version": "1.60.1",
+			"libs": {
+				"sap.f": {},
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {},
+				"be.wl.zcomploaderlib": {
+					"minVersion": "1.0.0"
+				}
+			}
+		},
+		"componentUsages": {
+			"Component1": {
+				"name": "be.wl.Component1",
+				"lazy": true
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "be.wl.CompLoaderApp.i18n.i18n"
+				}
+			},
+			"config": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": false
+				},
+				"dataSource": "ZCL_CONFIG_C_CDS",
+				"preload": true
+			},
+			"scenario": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request",
+					"useBatch": false
+				},
+				"dataSource": "ZCL_SCENARIO_C_CDS",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.f.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "be.wl.CompLoaderApp.view",
+				"transition": "slide",
+				"controlId": "flexibleColumnLayout"
+			},
+			"routes": [
+				{
+					"pattern": ":view:/:level:/:layout:{?query}",
+					"name": "query"
+				},
+				{
+					"pattern": ":view:/:level:/:layout:",
+					"name": "app"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,97 @@
+{
+  "welcomeFile": "/webapp/index.html",
+  "routes": [
+    {
+      "path": "/webapp/resources/be/wl/zcomploaderlib",
+      "target": {
+        "type": "application",
+        "name": "zcomploaderlib"
+      },
+      "description": ""
+    },
+    {
+      "path": "/sap/ui5/1/resources/be/wl/zcomploaderlib",
+      "target": {
+        "type": "application",
+        "name": "zcomploaderlib"
+      },
+      "description": ""
+    },
+    {
+      "path": "/resources/be/wl/zcomploaderlib",
+      "target": {
+        "type": "application",
+        "name": "zcomploaderlib"
+      },
+      "description": ""
+    },
+    {
+      "path": "/sap/bc/lrep",
+      "target": {
+        "type": "destination",
+        "name": "A4H",
+        "entryPath": "/sap/bc/lrep"
+      },
+      "description": "A4H"
+    },
+    {
+      "path": "/sap/bc/ui5_ui5",
+      "target": {
+        "type": "destination",
+        "name": "A4H",
+        "entryPath": "/sap/bc/ui5_ui5"
+      },
+      "description": "A4H"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "A4H",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "A4H"
+    },
+    {
+      "path": "/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.71.22"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.71.22"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/resources",
+        "version": "1.71.22"
+      },
+      "description": "SAPUI5 Resources"
+    },
+    {
+      "path": "/webapp/test-resources",
+      "target": {
+        "type": "service",
+        "name": "sapui5",
+        "entryPath": "/test-resources",
+        "version": "1.71.22"
+      },
+      "description": "SAPUI5 Test Resources"
+    }
+  ],
+  "sendWelcomeFileRedirect": true
+}

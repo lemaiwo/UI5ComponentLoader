@@ -1,0 +1,30 @@
+{
+	"name": "CompLoaderApp",
+	"version": "0.0.1",
+	"description": "",
+	"private": true,
+	"devDependencies": {
+		"@ui5/cli": "^2.10.1",
+		"@ui5/fs": "^2.0.6",
+		"@ui5/logger": "^2.0.1",
+		"@sap/ux-ui5-tooling": "1",
+		"eslint": "^6.2.2",
+		"ui5-task-transpile": "^0.3.1",
+		"rimraf": "3.0.2"
+	},
+	"scripts": {
+		"lint": "eslint webapp",
+		"start": "ui5 serve",
+		"start:demo":"npm run start:list & npm run start:detail & npm start",
+		"start:list":"cd ../listcomponent1 && npm start",
+		"start:detail":"cd ../detailcomponent1 && npm start",
+		"build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo",
+		"deploy": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateManifestBundle generateCachebusterInfo && rimraf archive.zip"
+	},
+	"ui5": {
+		"dependencies": [
+			"@sap/ux-ui5-tooling",
+			"ui5-task-transpile"
+		]
+	}
+}
